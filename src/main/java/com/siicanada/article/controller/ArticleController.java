@@ -2,7 +2,6 @@ package com.siicanada.article.controller;
 
 import com.siicanada.article.model.Article;
 import com.siicanada.article.service.ServiceArticle;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +14,7 @@ public class ArticleController {
   ServiceArticle serviceArticle;
 
   @GetMapping(value = "/articles", produces = MediaType.APPLICATION_JSON_VALUE)
-  public List<Article> getArticles() {
+  public Iterable<Article> getArticles() {
     return serviceArticle.getArticles();
   }
 }
