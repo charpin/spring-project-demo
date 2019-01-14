@@ -1,5 +1,8 @@
 package com.siicanada.article.model;
 
+import lombok.Data;
+
+@Data
 public class Article {
 
   private Integer id;
