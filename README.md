@@ -1,2 +1,2 @@
-# spring-projects
-Spring demo projects
+# spring-demo-project
+Spring demo project
