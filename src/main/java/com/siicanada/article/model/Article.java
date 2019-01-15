@@ -1,7 +1,6 @@
 package com.siicanada.article.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Set;
 import lombok.Data;
 
 @Data
@@ -20,6 +19,6 @@ public class Article {
   @JsonProperty("picture_description")
   private String pictureDescription;
   @JsonProperty("tags")
-  private Set<Tag> tags;
+  private String[] tags;
 
 }
