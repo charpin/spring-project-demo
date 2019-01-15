@@ -15,13 +15,16 @@ public class ArticleServiceImpl implements ArticleService {
   @Autowired
   private ArticleRepository articleRepository;
 
+  @Autowired
+  private ArticleMapper articleMapper;
+
   @Override
   public List<Article> getArticles() {
 
     List<ArticleEntity> articleEntities = articleRepository.findAll();
 
     return articleEntities.stream()
-        .map(articleEntity -> ArticleMapper.INSTANCE.entityToModel(articleEntity)).collect(
+        .map(articleEntity -> articleMapper.entityToModel(articleEntity)).collect(
             Collectors.toList());
   }
 }

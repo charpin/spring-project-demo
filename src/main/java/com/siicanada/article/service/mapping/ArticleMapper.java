@@ -8,10 +8,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public abstract class ArticleMapper {
-
-  public static ArticleMapper INSTANCE = Mappers.getMapper( ArticleMapper.class );
 
   public abstract Article entityToModel(ArticleEntity entity);
 
