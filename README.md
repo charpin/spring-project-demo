@@ -18,3 +18,7 @@ There are two options :
 ```shell
 mvn spring-boot:run
 ```
+
+## API Documentation
+
+SwaggerUI : http://\<hostname>:\<port>/article-api/swagger-ui.html (local : http://localhost:8080/article-api/swagger-ui.html)
