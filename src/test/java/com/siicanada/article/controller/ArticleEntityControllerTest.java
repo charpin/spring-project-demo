@@ -1,4 +1,4 @@
-package com.siicanada.article;
+package com.siicanada.article.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

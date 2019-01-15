@@ -34,13 +34,13 @@ public class ArticleEntity {
   private String picture;
   @Column(name = "picture_description")
   private String pictureDescription;
-  @ManyToMany(fetch = FetchType.EAGER, cascade = {
+  @ManyToMany(fetch = FetchType.LAZY, cascade = {
       CascadeType.PERSIST, CascadeType.MERGE
   })
   @JoinTable(name = "article_tag",
       joinColumns = {@JoinColumn(name = "article_id")},
       inverseJoinColumns = {@JoinColumn(name = "tag_id")})
-  @OrderColumn(name = "tag")
+  @OrderColumn(name = "description")
   private Set<TagEntity> tags = new HashSet<>();
 
 }

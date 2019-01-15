@@ -12,7 +12,7 @@ create table article
 create table tag
 (
    id integer not null AUTO_INCREMENT,
-   tag varchar(255) not null,
+   description varchar(255) not null,
    primary key(id)
 );
 
