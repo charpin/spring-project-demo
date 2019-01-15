@@ -1,6 +1,6 @@
 package com.siicanada.article.model;
 
-import java.util.List;
+import java.util.Set;
 import lombok.Data;
 
 @Data
@@ -12,6 +12,6 @@ public class Article {
   private String text;
   private String picture;
   private String pictureDescription;
-  private List<Tag> tags;
+  private Set<Tag> tags;
 
 }

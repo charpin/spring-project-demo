@@ -1,7 +1,7 @@
 package com.siicanada.article.service;
 
-import com.siicanada.article.repository.entity.ArticleEntity;
 import com.siicanada.article.repository.ArticleRepository;
+import com.siicanada.article.repository.entity.ArticleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
