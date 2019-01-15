@@ -14,7 +14,7 @@ import lombok.Data;
 public class TagEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   @Column(name = "description")
   private String description;
