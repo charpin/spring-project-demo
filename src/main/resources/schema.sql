@@ -5,7 +5,21 @@ create table article
    intro varchar(255) not null,
    text varchar(255) not null,
    picture varchar(255) not null,
-   pictureDescription varchar(255) not null,
-   tags varchar(255) not null,
+   picture_description varchar(255) not null,
    primary key(id)
 );
+
+create table tag
+(
+   id integer not null AUTO_INCREMENT,
+   tag varchar(255) not null,
+   primary key(id)
+);
+
+create table article_tag
+(
+   article_id integer not null,
+   tag_id integer not null,
+   primary key(article_id, tag_id)
+);
+

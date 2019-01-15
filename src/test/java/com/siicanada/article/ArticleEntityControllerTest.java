@@ -9,7 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(MockitoJUnitRunner.class)
 @AutoConfigureMockMvc
-public class ArticleControllerTest {
+public class ArticleEntityControllerTest {
 
   @Autowired
   private MockMvc mockMvc;

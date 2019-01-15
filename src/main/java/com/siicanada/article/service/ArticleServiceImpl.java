@@ -1,18 +1,18 @@
 package com.siicanada.article.service;
 
-import com.siicanada.article.model.Article;
-import com.siicanada.article.persistence.ArticleRepository;
+import com.siicanada.article.repository.entity.ArticleEntity;
+import com.siicanada.article.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ServiceArticleImpl implements ServiceArticle {
+public class ArticleServiceImpl implements ArticleService {
 
   @Autowired
   private ArticleRepository articleRepository;
 
   @Override
-  public Iterable<Article> getArticles() {
+  public Iterable<ArticleEntity> getArticles() {
     return articleRepository.findAll();
   }
 }
