@@ -45,7 +45,7 @@ public class ArticleControllerTest {
   }
 
   @Test
-  public void getArticles_shouldReturnArticleListAndStatusCode200() throws Exception {
+  public void getArticlesShouldReturnArticleListAndStatusCode200() throws Exception {
     String jsonExpected = "[{\"id\":1,\"title\":\"Bienvenue\",\"intro\":\"Ceci est une intro\",\"text\":null,\"picture\":null,\"picture_description\":null,\"tags\":null}]";
 
     Article article = new Article();
@@ -66,7 +66,7 @@ public class ArticleControllerTest {
   }
 
   @Test
-  public void getArticlesWithWrongPath_shouldReturnStatusCode404() throws Exception {
+  public void getArticlesWithWrongPathShouldReturnStatusCode404() throws Exception {
     mockMvc.perform(get("/articlesList"))
         .andExpect(status().isNotFound());
   }

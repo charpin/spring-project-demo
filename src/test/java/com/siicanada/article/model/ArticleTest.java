@@ -9,7 +9,7 @@ import org.junit.Test;
 public class ArticleTest {
 
   @Test
-  public void whenConvertArticleToJson_thenCorrect() throws JsonProcessingException {
+  public void whenConvertArticleToJsonThenCorrect() throws JsonProcessingException {
     Article article = new Article();
     article.setId(1);
     article.setTitle("Bienvenue");

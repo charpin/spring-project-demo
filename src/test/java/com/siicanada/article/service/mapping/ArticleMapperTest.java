@@ -58,7 +58,7 @@ public class ArticleMapperTest {
   }
 
   @Test
-  public void whenArticleNull_thenReturnArticleNull() {
+  public void whenArticleNullThenReturnArticleNull() {
     // given
     ArticleEntity articleEntity = null;
     // when
@@ -68,7 +68,7 @@ public class ArticleMapperTest {
   }
 
   @Test
-  public void whenTagNull_thenReturnArticleWithTagNull() {
+  public void whenTagNullThenReturnArticleWithTagNull() {
     // given
     ArticleEntity articleEntity = new ArticleEntity();
     articleEntity.setId(1);

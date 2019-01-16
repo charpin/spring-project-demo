@@ -22,13 +22,13 @@ public class ArticleRepositoryIT {
   private ArticleRepository articleRepository;
 
   @Test
-  public void whenArticleExist_thenReturnTrue() {
+  public void whenArticleExistThenReturnTrue() {
     final boolean articleFound = articleRepository.existsById(1);
     Assert.assertTrue(articleFound);
   }
 
   @Test
-  public void whenDeleteArticle_thenArticleNotExistAnymore() {
+  public void whenDeleteArticleThenArticleNotExistAnymore() {
 
     List<ArticleEntity> articleEntityList = articleRepository.findAll();
     final int sizeArticleEntityListBefore = articleEntityList.size();
@@ -36,18 +36,19 @@ public class ArticleRepositoryIT {
     ArticleEntity articleEntity = articleEntityList.get(0);
     articleRepository.delete(articleEntity);
 
-    final int sizeArticleEntityListExpected = articleRepository.findAll().size();
+    final int sizeArticleEntityListActual = articleRepository.findAll().size();
 
-    Assert.assertEquals(sizeArticleEntityListExpected, sizeArticleEntityListBefore - 1);
+    int sizeArticleEntityListExpected = sizeArticleEntityListBefore - 1;
+    Assert.assertEquals(sizeArticleEntityListExpected, sizeArticleEntityListActual);
 
     final boolean articleExist = articleRepository.existsById(articleEntity.getId());
     Assert.assertFalse(articleExist);
   }
 
   @Test
-  public void whenSaveArticle_thenArticleAdded() {
+  public void whenSaveArticleThenArticleAdded() {
 
-    final int sizeArticleListActual = articleRepository.findAll().size();
+    final int sizeArticleListBefore = articleRepository.findAll().size();
 
     ArticleEntity articleEntity = new ArticleEntity();
     articleEntity.setTitle("Canada");
@@ -59,9 +60,10 @@ public class ArticleRepositoryIT {
     entityManager.merge(articleEntity);
     entityManager.flush();
 
-    final int sizeArticleListExpected = articleRepository.findAll().size();
+    final int sizeArticleListAfter = articleRepository.findAll().size();
+    final int sizeArticleListExpected = sizeArticleListBefore + 1;
 
-    Assert.assertEquals(sizeArticleListExpected, sizeArticleListActual + 1);
+    Assert.assertEquals(sizeArticleListExpected, sizeArticleListAfter);
 
   }
 

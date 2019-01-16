@@ -5,7 +5,6 @@ import com.siicanada.article.ArticleApplication;
 import com.siicanada.article.model.Article;
 import java.io.IOException;
 import java.util.List;
-import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +31,7 @@ public class ArticleControllerIT {
   @Test
   public void testGetArticles() throws IOException {
 
-    HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+    HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
     ResponseEntity<String> response = restTemplate.exchange(
         createURLWithPort("/article-api/articles"),
