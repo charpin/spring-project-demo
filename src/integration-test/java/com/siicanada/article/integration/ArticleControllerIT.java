@@ -1,11 +1,14 @@
 package com.siicanada.article.integration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.siicanada.article.ArticleApplication;
 import com.siicanada.article.model.Article;
+import java.io.IOException;
+import java.util.List;
+import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -27,14 +30,22 @@ public class ArticleControllerIT {
   private HttpHeaders headers = new HttpHeaders();
 
   @Test
-  public void testGetArticles() {
+  public void testGetArticles() throws IOException {
 
     HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 
     ResponseEntity<String> response = restTemplate.exchange(
         createURLWithPort("/article-api/articles"),
         HttpMethod.GET, entity, String.class);
+    ObjectMapper objectMapper = new ObjectMapper();
 
+    List<Article> articles = objectMapper.readValue(
+        response.getBody(),
+        objectMapper.getTypeFactory().constructCollectionType(List.class, Article.class)
+    );
+
+    Assert.assertEquals(200, response.getStatusCodeValue());
+    Assert.assertFalse(articles.isEmpty());
   }
 
   private String createURLWithPort(String uri) {
