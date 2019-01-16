@@ -1,7 +1,7 @@
 package com.siicanada.article.repository.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,6 +41,6 @@ public class ArticleEntity {
       joinColumns = {@JoinColumn(name = "article_id")},
       inverseJoinColumns = {@JoinColumn(name = "tag_id")})
   @OrderColumn(name = "description")
-  private Set<TagEntity> tags = new HashSet<>();
+  private List<TagEntity> tags = new ArrayList<>();
 
 }

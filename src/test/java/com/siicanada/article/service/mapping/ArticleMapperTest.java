@@ -7,8 +7,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.siicanada.article.model.Article;
 import com.siicanada.article.repository.entity.ArticleEntity;
 import com.siicanada.article.repository.entity.TagEntity;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +41,7 @@ public class ArticleMapperTest {
     TagEntity tagEntity = new TagEntity();
     tagEntity.setId(1);
     tagEntity.setDescription("test description");
-    Set<TagEntity> tags = new HashSet<>();
+    List<TagEntity> tags = new ArrayList<>();
     tags.add(tagEntity);
     articleEntity.setTags(tags);
 
@@ -77,7 +79,7 @@ public class ArticleMapperTest {
     articleEntity.setTitle("test title");
     articleEntity.setPicture("test picture");
     articleEntity.setPictureDescription("test picture description");
-    Set<TagEntity> tags = null;
+    List<TagEntity> tags = null;
     articleEntity.setTags(tags);
 
     // when
