@@ -3,6 +3,7 @@ package com.siicanada.article.service.mapping;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
+
 import com.siicanada.article.model.Article;
 import com.siicanada.article.repository.entity.ArticleEntity;
 import com.siicanada.article.repository.entity.TagEntity;
@@ -12,8 +13,6 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /** Classe de test de la classe {@link com.siicanada.article.service.mapping.ArticleMapper} */

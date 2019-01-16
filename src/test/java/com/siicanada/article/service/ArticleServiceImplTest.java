@@ -1,6 +1,6 @@
 package com.siicanada.article.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.when;
 
 import com.siicanada.article.model.Article;
