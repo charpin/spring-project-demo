@@ -58,4 +58,41 @@ public class ArticleMapperTest {
     assertTrue(Arrays.asList(article.getTags()).contains("test description"));
   }
 
+  @Test
+  public void whenArticleNull_thenReturnArticleNull() {
+    // given
+    ArticleEntity articleEntity = null;
+    // when
+    Article article = articleMapper.entityToModel(articleEntity);
+    // then
+    assertTrue(article == null);
+  }
+
+  @Test
+  public void whenTagNull_thenReturnArticleWithTagNull() {
+    // given
+    ArticleEntity articleEntity = new ArticleEntity();
+    articleEntity.setId(1);
+    articleEntity.setIntro("test intro");
+    articleEntity.setText("test text");
+    articleEntity.setTitle("test title");
+    articleEntity.setPicture("test picture");
+    articleEntity.setPictureDescription("test picture description");
+    Set<TagEntity> tags = null;
+    articleEntity.setTags(tags);
+
+    // when
+    Article article = articleMapper.entityToModel(articleEntity);
+
+    // then
+    assertThat(article)
+        .hasFieldOrPropertyWithValue("id",1)
+        .hasFieldOrPropertyWithValue("intro","test intro")
+        .hasFieldOrPropertyWithValue("text","test text")
+        .hasFieldOrPropertyWithValue("title","test title")
+        .hasFieldOrPropertyWithValue("picture","test picture")
+        .hasFieldOrPropertyWithValue("pictureDescription","test picture description");
+    assertTrue(article.getTags() == null);
+  }
+
 }
