@@ -1,5 +1,6 @@
-package com.siicanada.article.repository;
+package com.siicanada.article.integration;
 
+import com.siicanada.article.repository.ArticleRepository;
 import com.siicanada.article.repository.entity.ArticleEntity;
 import java.util.List;
 import org.junit.Assert;
@@ -12,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class ArticleRepositoryIntegrationTest {
+public class ArticleRepositoryIT {
 
   @Autowired
   private TestEntityManager entityManager;

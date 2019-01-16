@@ -11,27 +11,39 @@ import com.siicanada.article.model.Article;
 import com.siicanada.article.service.ArticleService;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 @WebMvcTest(ArticleController.class)
 @AutoConfigureMockMvc
 public class ArticleControllerTest {
 
-  @Autowired
+
+  @InjectMocks
+  private ArticleController articleController;
+
   private MockMvc mockMvc;
 
-  @MockBean
+  @Mock
   private ArticleService articleService;
+
+  @Before
+  public void setup() {
+    MockitoAnnotations.initMocks(this);
+    this.mockMvc = MockMvcBuilders.standaloneSetup(articleController).build();
+  }
 
   @Test
   public void getArticles_shouldReturnArticleListAndStatusCode200() throws Exception {
