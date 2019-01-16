@@ -6,6 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Classe de test de la classe {@link Article}
+ */
 public class ArticleTest {
 
   @Test
