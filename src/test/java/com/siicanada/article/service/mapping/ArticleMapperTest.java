@@ -41,7 +41,7 @@ public class ArticleMapperTest {
     TagEntity tagEntity = new TagEntity();
     tagEntity.setId(1);
     tagEntity.setDescription("test description");
-    List<TagEntity> tags = new ArrayList<>();
+    Set<TagEntity> tags = new HashSet<>();
     tags.add(tagEntity);
     articleEntity.setTags(tags);
 
@@ -79,7 +79,7 @@ public class ArticleMapperTest {
     articleEntity.setTitle("test title");
     articleEntity.setPicture("test picture");
     articleEntity.setPictureDescription("test picture description");
-    List<TagEntity> tags = null;
+    Set<TagEntity> tags = null;
     articleEntity.setTags(tags);
 
     // when
