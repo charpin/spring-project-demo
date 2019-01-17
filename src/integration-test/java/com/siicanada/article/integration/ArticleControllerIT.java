@@ -5,9 +5,12 @@ import com.siicanada.article.ArticleApplication;
 import com.siicanada.article.model.Article;
 import java.io.IOException;
 import java.util.List;
+import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -45,6 +48,31 @@ public class ArticleControllerIT {
 
     Assert.assertEquals(200, response.getStatusCodeValue());
     Assert.assertFalse(articles.isEmpty());
+  }
+  @Test
+  public void testGetArticleById() throws IOException, JSONException {
+
+    HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+    ResponseEntity<String> response = restTemplate.exchange(
+        createURLWithPort("/article-api/articles/1"),
+        HttpMethod.GET, entity, String.class);
+
+    Assert.assertEquals(200, response.getStatusCodeValue());
+    JSONAssert.assertEquals(
+        "{id:1}", response.getBody(), JSONCompareMode.LENIENT);
+  }
+  @Test
+  public void testGetArticleByIdNotFound() throws IOException, JSONException {
+
+    HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+    ResponseEntity<String> response = restTemplate.exchange(
+        createURLWithPort("/article-api/articles/9"),
+        HttpMethod.GET, entity, String.class);
+
+    Assert.assertEquals(404, response.getStatusCodeValue());
+
   }
 
   private String createURLWithPort(String uri) {

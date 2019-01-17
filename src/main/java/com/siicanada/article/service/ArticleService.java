@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
 public interface ArticleService {
 
   List<Article> getArticles();
+
+  Article getArticleById(Integer id);
 }

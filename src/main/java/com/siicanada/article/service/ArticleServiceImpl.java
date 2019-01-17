@@ -27,4 +27,10 @@ public class ArticleServiceImpl implements ArticleService {
         .map(articleEntity -> articleMapper.entityToModel(articleEntity)).collect(
             Collectors.toList());
   }
+
+  @Override
+  public Article getArticleById(Integer id) {
+    ArticleEntity articleEntity = articleRepository.findById(id).orElseThrow(() -> new ArticleNotFoundException("Cannot find article id="+ id));
+    return articleMapper.entityToModel(articleEntity);
+  }
 }
