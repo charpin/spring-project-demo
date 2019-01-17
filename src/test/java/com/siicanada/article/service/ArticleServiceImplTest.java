@@ -5,9 +5,12 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
 import com.siicanada.article.exception.ArticleNotFoundException;
+import com.siicanada.article.exception.TagNotFoundException;
 import com.siicanada.article.model.Article;
 import com.siicanada.article.repository.ArticleRepository;
+import com.siicanada.article.repository.TagRepository;
 import com.siicanada.article.repository.entity.ArticleEntity;
+import com.siicanada.article.repository.entity.TagEntity;
 import com.siicanada.article.service.mapping.ArticleMapper;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +31,16 @@ public class ArticleServiceImplTest {
   private ArticleRepository articleRepository;
 
   @Mock
+  private TagRepository tagRepository;
+
+  @Mock
   private ArticleMapper articleMapper;
 
   @InjectMocks
   ArticleServiceImpl articleServiceImpl;
 
   @Test
-  public void testGetArticles(){
+  public void testGetArticles() {
     //given
     List<ArticleEntity> articleEntityList = new ArrayList<>();
     ArticleEntity articleEntity = new ArticleEntity();
@@ -46,8 +52,9 @@ public class ArticleServiceImplTest {
     List<Article> articles = articleServiceImpl.getArticles();
     assertFalse(articles.isEmpty());
   }
+
   @Test
-  public void testGetArticleFound(){
+  public void testGetArticleFound() {
     //given
     ArticleEntity articleEntity = new ArticleEntity();
     articleEntity.setId(1);
@@ -55,18 +62,50 @@ public class ArticleServiceImplTest {
     when(articleRepository.findById(1)).thenReturn(java.util.Optional.of(articleEntity));
     when(articleMapper.entityToModel(articleEntity)).thenReturn(new Article());
     //then
-    Article article  = articleServiceImpl.getArticleById(1);
+    Article article = articleServiceImpl.getArticleById(1);
     assertNotNull(article);
   }
 
   @Test(expected = ArticleNotFoundException.class)
-  public void testGetArticleNotFound(){
+  public void testGetArticleNotFound() {
     //given
     //when
     when(articleRepository.findById(1)).thenReturn(Optional.empty());
     //then
-   articleServiceImpl.getArticleById(1);
+    articleServiceImpl.getArticleById(1);
   }
+
+  @Test
+  public void testGetArticlesByTagDescription() {
+    //given
+    final String description = "sport";
+
+    List<ArticleEntity> articleEntityList = new ArrayList<>();
+    ArticleEntity articleEntity = new ArticleEntity();
+    articleEntityList.add(articleEntity);
+
+    TagEntity tagEntity = new TagEntity();
+    tagEntity.setId(1);
+    tagEntity.setDescription(description);
+    tagEntity.setArticles(articleEntityList);
+    //when
+    when(tagRepository.getByDescription(description)).thenReturn(tagEntity);
+    when(articleMapper.entityToModel(articleEntity)).thenReturn(new Article());
+    //then
+    List<Article> articles = articleServiceImpl.getArticlesByTagDescription(description);
+    assertFalse(articles.isEmpty());
+  }
+
+  @Test(expected = TagNotFoundException.class)
+  public void testGetTagByDescriptionNotFound() {
+    //given
+    final String description = "TV";
+    //when
+    tagRepository.getByDescription(description);
+    //then
+    articleServiceImpl.getArticlesByTagDescription(description);
+  }
+
 
 
 }

@@ -4,7 +4,6 @@ import com.siicanada.article.repository.TagRepository;
 import com.siicanada.article.repository.entity.ArticleEntity;
 import com.siicanada.article.repository.entity.TagEntity;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.EntityManager;
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,5 +33,18 @@ public class TagRepositoryIT {
     TagEntity tagFound = tagRepository.findById(1).get();
     List<ArticleEntity> articlesFromTag = tagFound.getArticles();
     Assert.assertFalse(articlesFromTag.isEmpty());
+  }
+
+  @Test
+  public void shouldAddNewTagThenTagExist() {
+    final String description = "handball";
+    TagEntity tagEntity = new TagEntity();
+    tagEntity.setDescription(description);
+
+    entityManager.persist(tagEntity);
+
+    TagEntity tagEntityExist = tagRepository.getByDescription(description);
+
+    Assert.assertTrue(tagEntityExist != null);
   }
 }

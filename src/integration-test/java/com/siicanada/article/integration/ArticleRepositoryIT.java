@@ -68,9 +68,9 @@ public class ArticleRepositoryIT {
   }
 
   @Test
-  public void getArticleById(){
+  public void getArticleById() {
     ArticleEntity articleFound = articleRepository.findById(1).get();
-    Assert.assertEquals(1,articleFound.getId(), 0.0);
+    Assert.assertEquals(1, articleFound.getId(), 0.0);
   }
 
 }
