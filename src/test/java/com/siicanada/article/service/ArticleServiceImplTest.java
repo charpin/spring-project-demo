@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
+import com.siicanada.article.exception.ArticleNotFoundException;
 import com.siicanada.article.model.Article;
 import com.siicanada.article.repository.ArticleRepository;
 import com.siicanada.article.repository.entity.ArticleEntity;

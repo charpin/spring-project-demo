@@ -10,4 +10,7 @@ public interface ArticleService {
   List<Article> getArticles();
 
   Article getArticleById(Integer id);
+
+  List<Article> getArticlesByTagDescription(String description);
+
 }
