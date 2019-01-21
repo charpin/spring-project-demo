@@ -14,15 +14,24 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Entity of a subject tag.
+ */
 @Getter
 @Setter
 @Entity
 @Table(name = "tag")
 public class TagEntity {
 
+  /**
+   * id.
+   */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  /**
+   * description.
+   */
   @Column(name = "description")
   private String description;
   @ManyToMany(fetch = FetchType.LAZY,

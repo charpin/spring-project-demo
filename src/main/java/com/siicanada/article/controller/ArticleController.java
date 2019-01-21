@@ -12,19 +12,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller pour les articles
+ * Controller for Articles.
  */
 @RestController
 public class ArticleController {
 
+  /**
+   * Business logic layer.
+   */
   @Autowired
   ArticleService articleService;
 
+  /**
+   * Get all articles.
+   *
+   * @return ResponseEntity list of all articles.
+   */
   @GetMapping(value = "/articles", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<List<Article>> getArticles() {
     return new ResponseEntity<>(articleService.getArticles(), HttpStatus.OK);
   }
 
+  /**
+   * Get one article by id.
+   * @param id article id
+   * @return ResponseEntity article.
+   */
   @GetMapping(value = "/articles/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Article> getArticleById(@PathVariable("id") Integer id) {
     return new ResponseEntity<>(articleService.getArticleById(id), HttpStatus.OK);

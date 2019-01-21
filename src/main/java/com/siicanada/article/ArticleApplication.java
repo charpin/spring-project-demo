@@ -3,6 +3,9 @@ package com.siicanada.article;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Main.
+ */
 @SpringBootApplication
 public class ArticleApplication {
 

@@ -11,12 +11,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller for Tag.
+ */
 @RestController
 public class TagController {
 
+  /**
+   * Business logic layer.
+   */
   @Autowired
   ArticleService articleService;
 
+  /**
+   * Get articles by tag descriptions.
+   *
+   * @param description tag description
+   * @return ResponseEntity list of articles.
+   */
   @GetMapping(value = "/tags/{description}/articles", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<List<Article>> getArticlesByDescription(
       @PathVariable("description") String description) {

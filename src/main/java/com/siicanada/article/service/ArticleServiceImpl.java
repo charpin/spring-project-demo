@@ -13,6 +13,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation Business Logic Layer interface.
+ */
 @Component
 public class ArticleServiceImpl implements ArticleService {
 
@@ -25,6 +28,9 @@ public class ArticleServiceImpl implements ArticleService {
   @Autowired
   private ArticleMapper articleMapper;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public List<Article> getArticles() {
 
@@ -34,6 +40,9 @@ public class ArticleServiceImpl implements ArticleService {
         .map(articleEntity -> articleMapper.entityToModel(articleEntity)).collect(
             Collectors.toList());
   }
+  /**
+   * {@inheritDoc}
+   */
 
   @Override
   public Article getArticleById(Integer id) {
@@ -41,6 +50,9 @@ public class ArticleServiceImpl implements ArticleService {
         .orElseThrow(() -> new ArticleNotFoundException("Cannot find article id=" + id));
     return articleMapper.entityToModel(articleEntity);
   }
+  /**
+   * {@inheritDoc}
+   */
 
   @Override
   public List<Article> getArticlesByTagDescription(String description) {
