@@ -5,16 +5,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TagTest {
+public class TagModelTest {
 
   @Test
   public void whenConvertTagToJson_thenCorrect() throws JsonProcessingException {
-    Tag tag = new Tag();
-    tag.setId(1);
-    tag.setDescription("sport");
+    TagModel tagModel = new TagModel();
+    tagModel.setId(1);
+    tagModel.setDescription("sport");
 
     String jsonExpected = "{\"description\":\"sport\"}";
-    String result = new ObjectMapper().writeValueAsString(tag);
+    String result = new ObjectMapper().writeValueAsString(tagModel);
 
     Assert.assertEquals(jsonExpected, result);
   }

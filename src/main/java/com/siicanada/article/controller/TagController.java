@@ -1,6 +1,6 @@
 package com.siicanada.article.controller;
 
-import com.siicanada.article.model.Article;
+import com.siicanada.article.model.ArticleModel;
 import com.siicanada.article.service.ArticleService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class TagController {
    * @return ResponseEntity list of articles.
    */
   @GetMapping(value = "/tags/{description}/articles", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<List<Article>> getArticlesByDescription(
+  public ResponseEntity<List<ArticleModel>> getArticlesByDescription(
       @PathVariable("description") String description) {
     return new ResponseEntity<>(articleService.getArticlesByTagDescription(description),
         HttpStatus.OK);

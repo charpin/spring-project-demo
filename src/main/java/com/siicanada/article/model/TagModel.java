@@ -8,7 +8,7 @@ import lombok.Data;
  * Model of a subject tag.
  */
 @Data
-public class Tag {
+public class TagModel {
 
   /**
    * id.

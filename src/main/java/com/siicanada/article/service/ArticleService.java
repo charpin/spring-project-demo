@@ -1,6 +1,6 @@
 package com.siicanada.article.service;
 
-import com.siicanada.article.model.Article;
+import com.siicanada.article.model.ArticleModel;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public interface ArticleService {
    *
    * @return List list of articles.
    */
-  List<Article> getArticles();
+  List<ArticleModel> getArticles();
 
   /**
    * Get one article by id.
@@ -23,7 +23,7 @@ public interface ArticleService {
    * @param id article id
    * @return Article article
    */
-  Article getArticleById(Integer id);
+  ArticleModel getArticleById(Integer id);
 
   /**
    * Get articles by tag descriptions.
@@ -31,6 +31,6 @@ public interface ArticleService {
    * @param description tag description
    * @return List list of articles.
    */
-  List<Article> getArticlesByTagDescription(String description);
+  List<ArticleModel> getArticlesByTagDescription(String description);
 
 }

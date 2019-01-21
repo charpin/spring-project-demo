@@ -6,7 +6,7 @@ import static org.mockito.Mockito.when;
 
 import com.siicanada.article.exception.ArticleNotFoundException;
 import com.siicanada.article.exception.TagNotFoundException;
-import com.siicanada.article.model.Article;
+import com.siicanada.article.model.ArticleModel;
 import com.siicanada.article.repository.ArticleRepository;
 import com.siicanada.article.repository.TagRepository;
 import com.siicanada.article.repository.entity.ArticleEntity;
@@ -47,10 +47,10 @@ public class ArticleServiceImplTest {
     articleEntityList.add(articleEntity);
     //when
     when(articleRepository.findAll()).thenReturn(articleEntityList);
-    when(articleMapper.entityToModel(articleEntity)).thenReturn(new Article());
+    when(articleMapper.entityToModel(articleEntity)).thenReturn(new ArticleModel());
     //then
-    List<Article> articles = articleServiceImpl.getArticles();
-    assertFalse(articles.isEmpty());
+    List<ArticleModel> articleModels = articleServiceImpl.getArticles();
+    assertFalse(articleModels.isEmpty());
   }
 
   @Test
@@ -60,10 +60,10 @@ public class ArticleServiceImplTest {
     articleEntity.setId(1);
     //when
     when(articleRepository.findById(1)).thenReturn(java.util.Optional.of(articleEntity));
-    when(articleMapper.entityToModel(articleEntity)).thenReturn(new Article());
+    when(articleMapper.entityToModel(articleEntity)).thenReturn(new ArticleModel());
     //then
-    Article article = articleServiceImpl.getArticleById(1);
-    assertNotNull(article);
+    ArticleModel articleModel = articleServiceImpl.getArticleById(1);
+    assertNotNull(articleModel);
   }
 
   @Test(expected = ArticleNotFoundException.class)
@@ -90,10 +90,10 @@ public class ArticleServiceImplTest {
     tagEntity.setArticles(articleEntityList);
     //when
     when(tagRepository.getByDescription(description)).thenReturn(tagEntity);
-    when(articleMapper.entityToModel(articleEntity)).thenReturn(new Article());
+    when(articleMapper.entityToModel(articleEntity)).thenReturn(new ArticleModel());
     //then
-    List<Article> articles = articleServiceImpl.getArticlesByTagDescription(description);
-    assertFalse(articles.isEmpty());
+    List<ArticleModel> articleModels = articleServiceImpl.getArticlesByTagDescription(description);
+    assertFalse(articleModels.isEmpty());
   }
 
   @Test(expected = TagNotFoundException.class)

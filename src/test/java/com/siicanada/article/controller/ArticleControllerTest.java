@@ -7,7 +7,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.siicanada.article.model.Article;
+import com.siicanada.article.model.ArticleModel;
 import com.siicanada.article.service.ArticleService;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,15 +51,15 @@ public class ArticleControllerTest {
   public void getArticlesShouldReturnArticleListAndStatusCode200() throws Exception {
     String jsonExpected = "[{\"id\":1,\"title\":\"Bienvenue\",\"intro\":\"Ceci est une intro\",\"text\":null,\"picture\":null,\"picture_description\":null,\"tags\":null}]";
 
-    Article article = new Article();
-    article.setId(1);
-    article.setTitle("Bienvenue");
-    article.setIntro("Ceci est une intro");
+    ArticleModel articleModel = new ArticleModel();
+    articleModel.setId(1);
+    articleModel.setTitle("Bienvenue");
+    articleModel.setIntro("Ceci est une intro");
 
-    List<Article> articleList = new ArrayList<>();
-    articleList.add(article);
+    List<ArticleModel> articleModelList = new ArrayList<>();
+    articleModelList.add(articleModel);
 
-    when(articleService.getArticles()).thenReturn(articleList);
+    when(articleService.getArticles()).thenReturn(articleModelList);
     mockMvc.perform(get("/articles"))
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
         .andExpect(content().json(jsonExpected))
@@ -78,12 +78,12 @@ public class ArticleControllerTest {
   public void getArticleShouldReturnArticleStatusCode200() throws Exception {
     String jsonExpected = "{\"id\":1,\"title\":\"Bienvenue\",\"intro\":\"Ceci est une intro\",\"text\":null,\"picture\":null,\"picture_description\":null,\"tags\":null}";
 
-    Article article = new Article();
-    article.setId(1);
-    article.setTitle("Bienvenue");
-    article.setIntro("Ceci est une intro");
+    ArticleModel articleModel = new ArticleModel();
+    articleModel.setId(1);
+    articleModel.setTitle("Bienvenue");
+    articleModel.setIntro("Ceci est une intro");
 
-    when(articleService.getArticleById(1)).thenReturn(article);
+    when(articleService.getArticleById(1)).thenReturn(articleModel);
     mockMvc.perform(get("/articles/1"))
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
         .andExpect(content().json(jsonExpected))

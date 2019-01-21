@@ -7,7 +7,7 @@ import lombok.Data;
  * Model of a newspaper article.
  */
 @Data
-public class Article {
+public class ArticleModel {
 
   /**
    * id.

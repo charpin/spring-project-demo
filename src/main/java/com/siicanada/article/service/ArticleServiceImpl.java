@@ -2,7 +2,7 @@ package com.siicanada.article.service;
 
 import com.siicanada.article.exception.ArticleNotFoundException;
 import com.siicanada.article.exception.TagNotFoundException;
-import com.siicanada.article.model.Article;
+import com.siicanada.article.model.ArticleModel;
 import com.siicanada.article.repository.ArticleRepository;
 import com.siicanada.article.repository.TagRepository;
 import com.siicanada.article.repository.entity.ArticleEntity;
@@ -32,7 +32,7 @@ public class ArticleServiceImpl implements ArticleService {
    * {@inheritDoc}
    */
   @Override
-  public List<Article> getArticles() {
+  public List<ArticleModel> getArticles() {
 
     List<ArticleEntity> articleEntities = articleRepository.findAll();
 
@@ -45,7 +45,7 @@ public class ArticleServiceImpl implements ArticleService {
    */
 
   @Override
-  public Article getArticleById(Integer id) {
+  public ArticleModel getArticleById(Integer id) {
     ArticleEntity articleEntity = articleRepository.findById(id)
         .orElseThrow(() -> new ArticleNotFoundException("Cannot find article id=" + id));
     return articleMapper.entityToModel(articleEntity);
@@ -55,7 +55,7 @@ public class ArticleServiceImpl implements ArticleService {
    */
 
   @Override
-  public List<Article> getArticlesByTagDescription(String description) {
+  public List<ArticleModel> getArticlesByTagDescription(String description) {
     TagEntity tagEntity = tagRepository.getByDescription(description);
     if (tagEntity == null) {
       throw new TagNotFoundException("Cannot find tag by description=" + description);

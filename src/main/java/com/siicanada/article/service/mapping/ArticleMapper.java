@@ -1,6 +1,6 @@
 package com.siicanada.article.service.mapping;
 
-import com.siicanada.article.model.Article;
+import com.siicanada.article.model.ArticleModel;
 import com.siicanada.article.repository.entity.ArticleEntity;
 import com.siicanada.article.repository.entity.TagEntity;
 import org.mapstruct.Mapper;
@@ -15,7 +15,7 @@ public abstract class ArticleMapper {
    * @param entity object ArticleEntity
    * @return ArticleModel
    */
-  public abstract Article entityToModel(ArticleEntity entity);
+  public abstract ArticleModel entityToModel(ArticleEntity entity);
 
 
   /**
