@@ -1,6 +1,6 @@
 package com.siicanada.article.controller;
 
-import com.siicanada.article.model.Article;
+import com.siicanada.article.model.ArticleModel;
 import com.siicanada.article.service.ArticleService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +21,12 @@ public class ArticleController {
   ArticleService articleService;
 
   @GetMapping(value = "/articles", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<List<Article>> getArticles() {
+  public ResponseEntity<List<ArticleModel>> getArticles() {
     return new ResponseEntity<>(articleService.getArticles(), HttpStatus.OK);
   }
 
   @GetMapping(value = "/articles/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Article> getArticleById(@PathVariable("id") Integer id) {
+  public ResponseEntity<ArticleModel> getArticleById(@PathVariable("id") Integer id) {
     return new ResponseEntity<>(articleService.getArticleById(id), HttpStatus.OK);
   }
 }

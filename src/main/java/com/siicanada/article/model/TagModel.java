@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class Tag {
+public class TagModel {
 
   @JsonIgnore
   private Integer id;

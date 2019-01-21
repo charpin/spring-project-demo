@@ -2,7 +2,7 @@ package com.siicanada.article.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.siicanada.article.ArticleApplication;
-import com.siicanada.article.model.Article;
+import com.siicanada.article.model.ArticleModel;
 import java.io.IOException;
 import java.util.List;
 import org.junit.Assert;
@@ -38,13 +38,13 @@ public class TagControllerIT {
         HttpMethod.GET, entity, String.class, "science");
     ObjectMapper objectMapper = new ObjectMapper();
 
-    List<Article> articles = objectMapper.readValue(
+    List<ArticleModel> articleModels = objectMapper.readValue(
         response.getBody(),
-        objectMapper.getTypeFactory().constructCollectionType(List.class, Article.class)
+        objectMapper.getTypeFactory().constructCollectionType(List.class, ArticleModel.class)
     );
 
     Assert.assertEquals(200, response.getStatusCodeValue());
-    Assert.assertFalse(articles.isEmpty());
+    Assert.assertFalse(articleModels.isEmpty());
   }
 
   @Test

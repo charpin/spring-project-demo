@@ -1,16 +1,16 @@
 package com.siicanada.article.service;
 
-import com.siicanada.article.model.Article;
+import com.siicanada.article.model.ArticleModel;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface ArticleService {
 
-  List<Article> getArticles();
+  List<ArticleModel> getArticles();
 
-  Article getArticleById(Integer id);
+  ArticleModel getArticleById(Integer id);
 
-  List<Article> getArticlesByTagDescription(String description);
+  List<ArticleModel> getArticlesByTagDescription(String description);
 
 }

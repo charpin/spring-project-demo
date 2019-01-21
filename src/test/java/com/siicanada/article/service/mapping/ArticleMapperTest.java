@@ -4,13 +4,11 @@ package com.siicanada.article.service.mapping;
 import static junit.framework.TestCase.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.siicanada.article.model.Article;
+import com.siicanada.article.model.ArticleModel;
 import com.siicanada.article.repository.entity.ArticleEntity;
 import com.siicanada.article.repository.entity.TagEntity;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,17 +44,17 @@ public class ArticleMapperTest {
     articleEntity.setTags(tags);
 
     // when
-    Article article = articleMapper.entityToModel(articleEntity);
+    ArticleModel articleModel = articleMapper.entityToModel(articleEntity);
 
     // then
-    assertThat(article)
+    assertThat(articleModel)
         .hasFieldOrPropertyWithValue("id",1)
         .hasFieldOrPropertyWithValue("intro","test intro")
         .hasFieldOrPropertyWithValue("text","test text")
         .hasFieldOrPropertyWithValue("title","test title")
         .hasFieldOrPropertyWithValue("picture","test picture")
         .hasFieldOrPropertyWithValue("pictureDescription","test picture description");
-    assertTrue(Arrays.asList(article.getTags()).contains("test description"));
+    assertTrue(Arrays.asList(articleModel.getTags()).contains("test description"));
   }
 
   @Test
@@ -64,9 +62,9 @@ public class ArticleMapperTest {
     // given
     ArticleEntity articleEntity = null;
     // when
-    Article article = articleMapper.entityToModel(articleEntity);
+    ArticleModel articleModel = articleMapper.entityToModel(articleEntity);
     // then
-    assertTrue(article == null);
+    assertTrue(articleModel == null);
   }
 
   @Test
@@ -83,17 +81,17 @@ public class ArticleMapperTest {
     articleEntity.setTags(tags);
 
     // when
-    Article article = articleMapper.entityToModel(articleEntity);
+    ArticleModel articleModel = articleMapper.entityToModel(articleEntity);
 
     // then
-    assertThat(article)
+    assertThat(articleModel)
         .hasFieldOrPropertyWithValue("id",1)
         .hasFieldOrPropertyWithValue("intro","test intro")
         .hasFieldOrPropertyWithValue("text","test text")
         .hasFieldOrPropertyWithValue("title","test title")
         .hasFieldOrPropertyWithValue("picture","test picture")
         .hasFieldOrPropertyWithValue("pictureDescription","test picture description");
-    assertTrue(article.getTags() == null);
+    assertTrue(articleModel.getTags() == null);
   }
 
 }
